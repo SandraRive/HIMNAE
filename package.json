@@ -1,0 +1,14 @@
+{
+  "name": "himnae",
+  "version": "1.0.0",
+  "description": "App para registrar entrenos, comidas, suplementación, medidas corporales y metas.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npx --yes http-server -c-1 -p 8080 .",
+    "build": "node scripts/build-standalone.mjs"
+  },
+  "devDependencies": {
+    "esbuild": "0.23.1"
+  }
+}

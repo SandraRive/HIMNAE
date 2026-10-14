@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>HIMNAE</title>
+  <meta name="description" content="Registra tus entrenos, comidas, suplementación, medidas y metas, y mira tu progreso.">
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Figtree:wght@400;500;600;700&display=swap">
+
+  <!-- Estilos (orden: tokens → base → componentes → pantallas) -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+  <!-- La pantalla activa se pinta aquí -->
+  <main class="app" id="app"></main>
+
+  <!-- Barra de pestañas -->
+  <div class="tabs"><nav id="tabs" aria-label="Secciones"></nav></div>
+
+  <!-- Hoja inferior para formularios (entreno, comida, suplementos) -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-back" data-act="close"></div>
+    <div class="sheet-panel" role="dialog" aria-modal="true" id="sheetBody"></div>
+  </div>
+
+  <!-- Aviso flotante -->
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <!-- Sugerencias para los campos de texto -->
+  <datalist id="foodlist"></datalist>
+  <datalist id="sesslist"></datalist>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

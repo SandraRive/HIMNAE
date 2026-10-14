@@ -1,0 +1,53 @@
+/* =========================================================
+   HIMNAE · Tokens de diseño
+   Colores, tipografías y radios. Todo el resto de la hoja
+   de estilos usa estas variables, así que para cambiar un
+   color de la app basta con tocarlo aquí.
+   ========================================================= */
+
+:root {
+  /* Superficies y texto */
+  --bg: #E8EBEE;
+  --surface: #FFFFFF;
+  --surface-2: #F2F4F6;
+  --line: #D3D8DE;
+  --fg: #14171C;
+  --muted: #5B636E;
+
+  /* Colores de los discos / métricas */
+  --red: #D3263B;      /* energía y comidas */
+  --blue: #0B8A9E;     /* proteína, agua, acento (turquesa) */
+  --yellow: #E2AA08;   /* agua, sensación "regular" */
+  --green: #1B9656;    /* entreno, sensación "bien" */
+  --orange: #E0681C;   /* suplementos, medidas */
+  --steel: #8A929C;    /* barra, neutros */
+
+  --accent: var(--blue);
+  --on-accent: #FFFFFF;
+
+  /* Tipografía */
+  --font-display: 'Barlow Condensed', 'Arial Narrow', system-ui, sans-serif;
+  --font-body: 'Figtree', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --r: 14px;
+}
+
+/* Tema oscuro automático (sigue al sistema) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1115; --surface: #181B21; --surface-2: #21252C; --line: #2D323A;
+    --fg: #ECEEF1; --muted: #9BA2AD;
+    --red: #F04A5E; --blue: #2CC3D4; --yellow: #F2C232; --green: #3BC27C;
+    --orange: #FF8F4D; --steel: #6E7681; --on-accent: #0F1115;
+    color-scheme: dark;
+  }
+}
+
+/* Tema oscuro forzado */
+:root[data-theme="dark"] {
+  --bg: #0F1115; --surface: #181B21; --surface-2: #21252C; --line: #2D323A;
+  --fg: #ECEEF1; --muted: #9BA2AD;
+  --red: #F04A5E; --blue: #2CC3D4; --yellow: #F2C232; --green: #3BC27C;
+  --orange: #FF8F4D; --steel: #6E7681; --on-accent: #0F1115;
+  color-scheme: dark;
+}

@@ -1,0 +1,135 @@
+/* =========================================================
+   HIMNAE · Componentes reutilizables
+   Tarjetas, chips, barras de progreso, filas con casilla,
+   pestañas, hoja inferior (formularios) y avisos.
+   ========================================================= */
+
+/* ---------- Tarjeta ---------- */
+.card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0;
+}
+
+/* ---------- Aviso de datos de ejemplo ---------- */
+.banner {
+  background: color-mix(in srgb, var(--yellow) 20%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--yellow) 55%, var(--line));
+  border-radius: var(--r); padding: 12px 14px;
+  display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+}
+.banner p { flex: 1; min-width: 200px; font-size: .9rem; }
+
+/* ---------- Cabecera con flechas (día / periodo) ---------- */
+.dayhead { display: flex; align-items: center; gap: 10px; }
+.dayhead .mid { flex: 1; text-align: center; min-width: 0; }
+.dayhead p { color: var(--muted); text-transform: capitalize; }
+
+/* ---------- Chips, etiquetas e interruptor ---------- */
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip {
+  border: 1px solid var(--line); background: var(--surface); border-radius: 99px;
+  padding: 6px 12px; font-size: .85rem; font-weight: 600; display: inline-flex; align-items: center; gap: 6px;
+}
+.chip[aria-pressed="true"] { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.chip.feel[aria-pressed="true"] { background: var(--c); border-color: var(--c); color: #fff; }
+
+.tag {
+  display: inline-block; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  padding: 2px 8px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line);
+}
+.tag.pr { background: var(--yellow); border-color: var(--yellow); color: #1A1500; }
+.auto-tag {
+  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--muted);
+  border: 1px solid var(--line); border-radius: 99px; padding: 1px 6px;
+}
+
+.switch { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; font-weight: 600; border: 0; background: none; padding: 0; }
+.switch i { width: 38px; height: 22px; border-radius: 99px; background: var(--line); position: relative; transition: background .2s; flex: none; }
+.switch i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 16px; height: 16px; border-radius: 50%; background: var(--surface); transition: left .2s; }
+.switch[aria-checked="true"] i { background: var(--accent); }
+.switch[aria-checked="true"] i::after { left: 19px; }
+
+.dot { width: 10px; height: 10px; border-radius: 3px; background: var(--c); flex: none; align-self: center; display: inline-block; }
+
+/* ---------- Métricas con barra ---------- */
+.metric { display: flex; flex-direction: column; gap: 6px; }
+.m-top { display: flex; align-items: baseline; gap: 8px; }
+.m-name { font-weight: 600; flex: 1; }
+.m-val { font-variant-numeric: tabular-nums; font-weight: 600; }
+.m-val small { color: var(--muted); font-weight: 500; }
+.track { height: 10px; background: var(--surface-2); border-radius: 99px; overflow: hidden; border: 1px solid var(--line); }
+.track i { display: block; height: 100%; border-radius: 99px; transition: width .3s; }
+
+.week-dots { display: flex; gap: 6px; }
+.wd { flex: 1; text-align: center; font-size: .7rem; color: var(--muted); display: flex; flex-direction: column; gap: 4px; align-items: center; }
+.wd span { width: 100%; max-width: 34px; height: 8px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); }
+.wd.on span { background: var(--green); border-color: var(--green); }
+.wd.today { color: var(--fg); font-weight: 700; }
+
+/* ---------- Listas ---------- */
+.list { display: flex; flex-direction: column; }
+.item { display: flex; gap: 10px; align-items: center; padding: 10px 0; border-top: 1px solid var(--line); }
+.item:first-child { border-top: 0; }
+.item .grow p { overflow-wrap: anywhere; }
+
+/* ---------- Filas con casilla (suplementos y metas) ---------- */
+.supp { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.supp:first-child { border-top: 0; }
+.supp .grow p { overflow-wrap: anywhere; }
+.tick {
+  width: 40px; height: 40px; border-radius: 12px; border: 2px solid var(--line); background: var(--surface-2);
+  display: grid; place-items: center; flex: none; padding: 0; color: transparent;
+}
+.tick svg { width: 22px; height: 22px; }
+.tick[aria-pressed="true"] { background: var(--fg); border-color: var(--fg); color: var(--bg); }
+.strip { display: flex; gap: 3px; flex: none; }
+.strip i { width: 9px; height: 18px; border-radius: 3px; background: var(--surface-2); border: 1px solid var(--line); }
+.strip i.on { background: var(--fg); border-color: var(--fg); }
+.strip i.cur { outline: 2px solid var(--accent); outline-offset: 1px; }
+.ring {
+  width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; flex: none;
+  font-family: var(--font-display); font-weight: 800; font-size: .95rem; border: 2px solid var(--line); background: var(--surface-2);
+}
+.ring.done { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+.gin { width: 70px !important; flex: none; text-align: center; }
+
+/* ---------- Pestañas inferiores ---------- */
+.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+  background: var(--surface); border-top: 1px solid var(--line);
+  padding: 6px 6px calc(6px + env(safe-area-inset-bottom, 0px));
+}
+.tabs nav { max-width: 680px; margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; }
+.tab {
+  border: 0; background: transparent; border-radius: 10px; padding: 6px 0; min-width: 0;
+  display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: .68rem; font-weight: 600; color: var(--muted);
+}
+.tab svg { width: 23px; height: 23px; }
+.tab[aria-current="page"] { color: var(--fg); background: var(--surface-2); }
+
+/* ---------- Hoja inferior (formularios) ---------- */
+.sheet { position: fixed; inset: 0; z-index: 20; display: flex; align-items: flex-end; justify-content: center; }
+.sheet-back { position: absolute; inset: 0; background: rgba(10, 12, 16, .5); }
+.sheet-panel {
+  position: relative; background: var(--surface); width: 100%; max-width: 680px; max-height: 92%; overflow: auto;
+  border-radius: 18px 18px 0 0; padding: 18px 16px calc(18px + env(safe-area-inset-bottom, 0px));
+  display: flex; flex-direction: column; gap: 14px;
+}
+@media (min-width: 700px) { .sheet { align-items: center; } .sheet-panel { border-radius: 18px; max-height: 88%; } }
+
+.ex-card { border: 1px solid var(--line); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: var(--surface-2); }
+.ex-card input, .ex-card select { background: var(--surface); }
+.set-row { display: grid; grid-template-columns: 24px minmax(0, 1fr) minmax(0, 1fr) 34px; gap: 6px; align-items: center; }
+.tset-row { display: grid; grid-template-columns: 20px minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, .8fr) minmax(0, 1fr) 30px; gap: 4px; align-items: center; }
+.tset-row input { padding: 8px 6px; font-size: .85rem; }
+.tset-row .label { font-size: .62rem; letter-spacing: .04em; }
+.set-row .n, .tset-row .n { font-family: var(--font-display); font-weight: 700; color: var(--muted); text-align: center; }
+
+/* ---------- Aviso flotante y estado ---------- */
+.toast {
+  position: fixed; left: 50%; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%);
+  background: var(--fg); color: var(--bg); padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: .9rem;
+  z-index: 30; max-width: calc(100% - 32px);
+}
+.status { font-size: .8rem; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+.status i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
