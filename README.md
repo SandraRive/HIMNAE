@@ -17,6 +17,8 @@ App web para registrar el gimnasio, el deporte y la alimentación, con niveles, 
 
 ```
 index.html        Esqueleto de la página
+site.webmanifest  Nombre e iconos para instalar la app en el móvil
+assets/icons/     Icono de la app en todos los tamaños
 css/              Estilos: tokens, base, componentes y pantallas
 js/
   main.js         Arranque y render
@@ -36,7 +38,7 @@ La explicación completa de capas, flujo de datos y modelo de datos está en [do
 
 ## Cómo usarla
 
-**En GitHub Pages:** Settings → Pages → rama `main`, carpeta `/ (root)`. La app quedará en `https://sandrarive.github.io/HIMNAE-/`.
+**En GitHub Pages:** Settings → Pages → rama `main`, carpeta `/ (root)`. La app quedará en `https://sandrarive.github.io/HIMNAE/`.
 
 **En local:** como usa módulos de JavaScript, hay que abrirla con un servidor (no con doble clic):
 
@@ -52,6 +54,10 @@ También vale la extensión **Live Server** de VS Code (clic derecho en `index.h
 npm install
 npm run build        # genera dist/himnae.html
 ```
+
+## Instalarla en el móvil
+
+Abre la web en el navegador del móvil y elige **Añadir a pantalla de inicio**: aparecerá con el icono de HIMNAE como una app más.
 
 ## Datos
 

@@ -35,6 +35,8 @@ flowchart TD
 ```
 HIMNAE/
 ├── index.html                 Esqueleto de la página (sin lógica)
+├── site.webmanifest           Nombre e iconos para instalarla en el móvil
+├── assets/icons/              Icono de la app (favicon, iPhone, Android)
 ├── css/
 │   ├── tokens.css             Colores, tipografías, tema claro/oscuro
 │   ├── base.css               Reset, tipografía, botones, formularios
@@ -150,6 +152,7 @@ Para pasar datos entre navegadores: **Metas → Tus datos → Copiar copia de se
 | Un ejercicio o grupo muscular nuevo | `js/config/constants.js` → `EXERCISE_LIBRARY` / `GROUPS` |
 | Una medida corporal nueva | `constants.js` → `MEASURES` y su posición en `MEASURE_POINTS` |
 | Cambiar un color | `css/tokens.css` |
+| Cambiar el icono | Sustituye los PNG de `assets/icons/` manteniendo los nombres y tamaños |
 | Un botón nuevo | Ponle `data-act="mi-accion"` y añade `'mi-accion': (btn) => {...}` en el archivo de `js/actions/` de su área |
 | Una pantalla nueva | Crea `js/views/mi-pantalla.js` y añádela a `VIEWS` en `js/main.js` (y su icono en `ui/icons.js`) |
 | Un cálculo nuevo (p. ej. calorías quemadas) | Una función en el archivo de `js/domain/` que corresponda |
