@@ -19,7 +19,7 @@ const js = await build({
 const script = js.outputFiles[0].text.replace(/<\/script/gi, '<\\/script');
 
 // 2. CSS: los cuatro archivos en orden
-const css = (await Promise.all(['css/tokens.css', 'css/base.css', 'css/components.css', 'css/views.css'].map(read))).join('\n');
+const css = (await Promise.all(['css/tokens.css', 'css/base.css', 'css/components.css', 'css/views.css', 'css/guided.css'].map(read))).join('\n');
 
 // 3. HTML: se sustituyen los <link> locales y el <script type="module">
 let html = await read('index.html');

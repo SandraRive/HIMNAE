@@ -41,12 +41,14 @@ HIMNAE/
 │   ├── tokens.css             Colores, tipografías, tema claro/oscuro
 │   ├── base.css               Reset, tipografía, botones, formularios
 │   ├── components.css         Tarjetas, chips, pestañas, hoja inferior...
-│   └── views.css              Estilos propios de cada pantalla
+│   ├── views.css              Estilos propios de cada pantalla
+│   └── guided.css             Entreno guiado y reproductor
 ├── js/
 │   ├── main.js                Arranque y render
 │   ├── events.js              Clic / input / change / teclado → acciones
 │   ├── config/
-│   │   └── constants.js       Catálogos y ajustes por defecto
+│   │   ├── constants.js       Catálogos y ajustes por defecto
+│   │   └── guided-exercises.js Ejercicios guiados: poses, músculos y consejos
 │   ├── core/
 │   │   ├── state.js           Estado (S, ui) y suscripción a cambios
 │   │   ├── days.js            Modelo de un día
@@ -59,17 +61,21 @@ HIMNAE/
 │   │   ├── supplements.js     Suplementación
 │   │   ├── goals.js           Metas por periodo
 │   │   ├── measures.js        Medidas corporales
+│   │   ├── circuits.js        Generador de circuitos guiados
 │   │   └── stats.js           Rachas, XP y nivel
 │   ├── ui/
 │   │   ├── charts.js          Barra del día, líneas y barras (SVG)
+│   │   ├── animator.js        Motor de animación de ejercicios (SVG)
 │   │   ├── figure.js          Muñeco de medidas (SVG)
 │   │   ├── components.js      Piezas comunes (métricas, metas, suplementos...)
 │   │   ├── confirm.js         Confirmación con doble toque
 │   │   └── icons.js           Iconos
-│   ├── views/                 hoy · entreno · comida · cuerpo · metas · progreso
+│   ├── views/                 hoy · entreno · comida · cuerpo · metas · progreso · guided
+│   ├── player/
+│   │   └── player.js          Reproductor del entreno guiado (temporizador)
 │   ├── sheets/                sheet · session · meal · supplement
 │   └── actions/               navigation · day · training · nutrition ·
-│                              supplements · body · goals · progress · data
+│                              supplements · body · goals · progress · data · guided
 ├── scripts/
 │   └── build-standalone.mjs   Genera dist/himnae.html (todo en un archivo)
 └── docs/
@@ -136,6 +142,28 @@ S.settings = {
 };
 ```
 
+## Entreno guiado
+
+1. `domain/circuits.js` elige ejercicios de `config/guided-exercises.js` según el tipo, el material y la duración, y calcula las rondas.
+2. `circuitSteps()` convierte el circuito en una lista de pasos (calentamiento, ejercicio, descanso).
+3. `player/player.js` recorre los pasos con un temporizador, pitidos en 3-2-1 y la pantalla encendida.
+4. Al terminar, `circuitToSession()` lo convierte en una sesión normal del historial.
+
+### Animaciones
+
+Las animaciones no son vídeos: `ui/animator.js` dibuja un muñeco articulado en SVG. Cada ejercicio define 2-5 **poses clave** con los ángulos de tronco, brazos y piernas, y el motor interpola entre ellas en bucle. Los músculos de `hl` se pintan en rojo. Para añadir un ejercicio basta con una entrada nueva en `guided-exercises.js`:
+
+```js
+'squat': {
+  name: 'Sentadilla', group: 'pierna', tags: ['piernas'], reps: 15,
+  muscles: ['Cuádriceps', 'Glúteos'], hl: ['thigh', 'glute'], ms: 900,
+  frames: [S({}), S({ torso: 34, lL: [86, 122], lR: [86, 122], aL: [78, 0], aR: [82, 0] })],
+  tips: ['Lleva la cadera atrás como si te sentaras.', 'Rodillas en la línea de los pies.'],
+},
+```
+
+Zonas que se pueden resaltar: `thigh`, `shin`, `upperArm`, `forearm`, `shoulder`, `glute`, `chest`, `core`, `back`.
+
 ## Guardado
 
 `core/storage.js` decide dónde se guardan los datos; el resto de la app no lo sabe:
@@ -156,4 +184,6 @@ Para pasar datos entre navegadores: **Metas → Tus datos → Copiar copia de se
 | Un botón nuevo | Ponle `data-act="mi-accion"` y añade `'mi-accion': (btn) => {...}` en el archivo de `js/actions/` de su área |
 | Una pantalla nueva | Crea `js/views/mi-pantalla.js` y añádela a `VIEWS` en `js/main.js` (y su icono en `ui/icons.js`) |
 | Un cálculo nuevo (p. ej. calorías quemadas) | Una función en el archivo de `js/domain/` que corresponda |
+| Un ejercicio guiado nuevo | `js/config/guided-exercises.js` (ver *Entreno guiado* arriba) |
+| Un tipo de circuito nuevo | `js/domain/circuits.js` → `GUIDED_TYPES` |
 | Una medalla nueva | `js/views/progreso.js` → `badgesCard()` |

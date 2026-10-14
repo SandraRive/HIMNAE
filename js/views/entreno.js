@@ -4,6 +4,7 @@ import { S } from '../core/state.js';
 import { esc, fmtLong, fmtN, todayKey } from '../core/utils.js';
 import { allSessions, computePRs, groupLabel, normName, sessionKm, sessionVolume, setsText, typeLabel, weekCount } from '../domain/training.js';
 import { demoBanner, feelLegend, weekDots } from '../ui/components.js';
+import { guidedCard } from './guided.js';
 
 function exerciseLine(w, e, marks) {
   const f = FEEL[e.feel], isPr = marks[w.id + '|' + normName(e.name)];
@@ -35,6 +36,7 @@ export function viewEntreno() {
   return demoBanner()
     + '<div class="row between"><h1>Entreno</h1><button class="btn primary" data-act="new-sess">+ Nueva sesión</button></div>'
     + `<section class="card"><div class="row between"><span class="label">Esta semana</span><span class="num"><b>${weekCount(todayKey())}</b> <span class="muted">/ ${S.settings.weekly} sesiones</span></span></div>${weekDots(todayKey())}</section>`
+    + guidedCard()
     + `<section class="card"><div class="row between"><h2>Historial</h2><span class="chart-legend">${feelLegend()}</span></div>
        ${html || '<p class="empty">Todavía no hay sesiones. Pulsa «Nueva sesión» para registrar la primera.</p>'}</section>`;
 }

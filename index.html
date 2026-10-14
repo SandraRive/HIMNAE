@@ -24,6 +24,7 @@
   <link rel="stylesheet" href="css/base.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/guided.css">
 </head>
 <body>
   <!-- La pantalla activa se pinta aquí -->
@@ -37,6 +38,9 @@
     <div class="sheet-back" data-act="close"></div>
     <div class="sheet-panel" role="dialog" aria-modal="true" id="sheetBody"></div>
   </div>
+
+  <!-- Reproductor del entreno guiado (pantalla completa) -->
+  <div class="player" id="player" role="dialog" aria-modal="true" aria-label="Entreno guiado" hidden></div>
 
   <!-- Aviso flotante -->
   <div class="toast" id="toast" role="status" hidden></div>

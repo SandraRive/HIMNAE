@@ -1,0 +1,60 @@
+/* =========================================================
+   HIMNAE · Entreno guiado y reproductor a pantalla completa
+   ========================================================= */
+
+/* ---------- Tarjeta de Entreno ---------- */
+.gx-opts { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.gx-opts .label { margin-bottom: 6px; }
+.gx-preview { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid var(--line); padding-top: 12px; }
+.gx-list { display: flex; flex-direction: column; gap: 6px; }
+.gx-row {
+  display: flex; align-items: center; gap: 12px; width: 100%; text-align: left;
+  background: var(--surface-2); border: 1px solid var(--line); border-radius: 12px; padding: 6px 12px 6px 6px;
+}
+.gx-row:hover { border-color: var(--accent); }
+.gx-row .grow { display: flex; flex-direction: column; }
+.gx-thumb { width: 56px; height: 56px; border-radius: 10px; background: var(--surface); flex: none; display: grid; place-items: center; overflow: hidden; }
+.anim-thumb { width: 56px; height: 59px; }
+
+/* ---------- Animación grande ---------- */
+.pl-anim { width: 100%; max-width: 320px; margin: 0 auto; aspect-ratio: 200 / 210; background: var(--surface-2); border-radius: 18px; border: 1px solid var(--line); }
+.pl-anim .anim { width: 100%; height: 100%; display: block; }
+.pl-tips { margin: 0; padding-left: 18px; color: var(--muted); font-size: .88rem; display: flex; flex-direction: column; gap: 4px; }
+
+/* ---------- Reproductor ---------- */
+.player {
+  position: fixed; inset: 0; z-index: 40; background: var(--bg); overflow: auto;
+  display: flex; flex-direction: column;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) 16px calc(12px + env(safe-area-inset-bottom, 0px));
+}
+.player > * { width: 100%; max-width: 560px; margin-inline: auto; }
+.pl-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.pl-title { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.pl-title b { font-family: var(--font-display); font-size: 1.2rem; text-transform: uppercase; letter-spacing: .02em; }
+.pl-title span { font-size: .8rem; color: var(--muted); }
+.pl-progress { height: 6px; border-radius: 99px; background: var(--surface-2); border: 1px solid var(--line); overflow: hidden; margin-top: 10px; }
+.pl-progress i { display: block; height: 100%; background: var(--accent); transition: width .3s; }
+
+.pl-body { flex: 1; display: flex; flex-direction: column; gap: 10px; padding-block: 14px; text-align: center; }
+.pl-body .chips { justify-content: center; }
+.pl-body .pl-tips { text-align: left; max-width: 380px; margin-inline: auto; }
+.pl-count { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.pl-name { font-size: 1.9rem; line-height: 1.05; }
+.pl-timer { font-family: var(--font-display); font-weight: 800; font-size: 4.2rem; line-height: 1; color: var(--fg); }
+.pl-hint { color: var(--muted); font-size: .9rem; }
+.pl-body.rest .pl-timer { color: var(--accent); }
+.pl-body.rest .pl-anim { opacity: .75; max-width: 220px; }
+
+.pl-controls { display: flex; align-items: center; justify-content: center; gap: 14px; padding-top: 6px; }
+.icon-btn.big { width: 52px; height: 52px; font-size: 1.3rem; border-radius: 14px; }
+.pl-play { min-width: 150px; justify-content: center; padding: 14px; font-size: 1rem; }
+
+.pl-menu { position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(340px, calc(100% - 32px)); z-index: 41; box-shadow: 0 20px 60px rgba(0, 0, 0, .35); }
+.pl-menu .btn { justify-content: center; }
+
+.pl-end { justify-content: center; gap: 14px; }
+.pl-medal {
+  width: 88px; height: 88px; border-radius: 50%; margin: 0 auto; display: grid; place-items: center;
+  font-size: 2.6rem; font-weight: 800; background: var(--green); color: #fff;
+}
+.pl-end .btn { justify-content: center; }

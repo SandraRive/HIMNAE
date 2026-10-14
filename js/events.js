@@ -15,11 +15,14 @@ import { bodyActions, onBodyChange, onBodyFocus, onBodyKey } from './actions/bod
 import { goalActions, onGoalsChange } from './actions/goals.js';
 import { progressActions, onProgressChange } from './actions/progress.js';
 import { dataActions } from './actions/data.js';
+import { guidedActions } from './actions/guided.js';
+import { onPlayerKey, playerActions } from './player/player.js';
 import { closeSheet, sheetIsOpen } from './sheets/sheet.js';
 
 const ACTIONS = {
   ...navigationActions, ...dayActions, ...trainingActions, ...nutritionActions,
   ...supplementActions, ...bodyActions, ...goalActions, ...progressActions, ...dataActions,
+  ...guidedActions, ...playerActions,
 };
 
 /** Al pulsar Intro en estos campos se pulsa el botón indicado */
@@ -49,7 +52,7 @@ export function initEvents() {
   document.addEventListener('focusin', (e) => onBodyFocus(e.target));
 
   document.addEventListener('keydown', (e) => {
-    if (onBodyKey(e)) return;
+    if (onPlayerKey(e) || onBodyKey(e)) return;
     if (e.key === 'Escape' && sheetIsOpen()) { closeSheet(); return; }
     const act = e.key === 'Enter' && ENTER_SUBMITS[e.target.id];
     if (act) document.querySelector(`[data-act="${act}"]`)?.click();

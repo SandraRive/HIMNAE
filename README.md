@@ -7,7 +7,7 @@ App web para registrar el gimnasio, el deporte y la alimentación, con niveles, 
 | Pestaña | Qué hace |
 |---|---|
 | **Hoy** | El día como una barra olímpica: cada objetivo cumplido carga un disco (energía o comidas, proteína, agua, suplementos, entreno). También muestra el nivel, la XP, la racha, las metas del día, la suplementación y el peso. |
-| **Entreno** | Sesiones de fuerza, solo cardio, mixto, deporte o movilidad. Cada ejercicio lleva su grupo muscular, sus series (kg × reps, o nombre / tiempo / reps / descanso para cardio y abdominales), el equipo, el agarre, la mano y cómo te ha ido (bien / regular / mal). |
+| **Entreno** | **Entreno guiado**: eliges tipo (cardio, HIIT, piernas, core, tren superior, full body, movilidad), duración, nivel y material, y la app crea un circuito que sigues paso a paso con animaciones de cada ejercicio, temporizador y descansos. También registro manual de sesiones de fuerza, solo cardio, mixto, deporte o movilidad. Cada ejercicio lleva su grupo muscular, sus series (kg × reps, o nombre / tiempo / reps / descanso para cardio y abdominales), el equipo, el agarre, la mano y cómo te ha ido (bien / regular / mal). |
 | **Comida** | Comidas por franjas, con calorías y macros opcionales o en modo "sin calorías". Las comidas frecuentes se añaden con un toque. |
 | **Cuerpo** | Muñeco con 8 puntos de medida, una fecha por medición, gráficas que comparan derecha e izquierda y un historial. |
 | **Metas** | Metas propias diarias, semanales, mensuales y anuales: se marcan como hechas o se van sumando hasta una cifra. Incluye los objetivos automáticos y la copia de seguridad. |
@@ -28,6 +28,7 @@ js/
   domain/         Lógica: entrenos, comida, suplementos, metas, medidas, XP
   ui/             Gráficas, muñeco y piezas comunes
   views/          Una pantalla por archivo
+  player/         Reproductor del entreno guiado
   sheets/         Formularios (sesión, comida, suplementos)
   actions/        Qué hace cada botón, por área
 scripts/          Build a un único archivo

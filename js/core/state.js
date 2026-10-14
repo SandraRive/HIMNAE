@@ -30,6 +30,7 @@ export const ui = {
   measSel: 'cintura',
   gPer: 'day',              // periodo visible en Metas
   gRef: todayKey(),
+  guided: { type: 'cardio', level: 'media', duration: 20, equip: [], circuit: null }, // entreno guiado
 };
 
 const listeners = new Set();
